@@ -17,7 +17,8 @@ const store = useExampleStore()
   <h1>vite + vue</h1>
 
   <div class="card">
-    <button type="button" @click="store.increment">
+    This button use less style
+    <button class="button" type="button" @click="store.increment">
       count is {{ store.count }}
     </button>
     <p>
@@ -40,7 +41,7 @@ const store = useExampleStore()
   <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
 </template>
 
-<style scoped>
+<style scoped lang="less">
 .read-the-docs {
   color: #888;
 }
@@ -55,5 +56,9 @@ const store = useExampleStore()
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+
+.button {
+  background-color: @example-color;
 }
 </style>

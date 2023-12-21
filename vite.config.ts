@@ -13,6 +13,17 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         '@': path.resolve(__dirname, 'src')
       }
     },
+    css: {
+      preprocessorOptions: {
+        // 引入全局less样式
+        less: {
+          modifyVars: {
+            hack: `true; @import "./src/assets/less/base.less";`
+          },
+          javascriptEnabled: true
+        }
+      }
+    },
     //启动服务配置
     server: {
       host: '0.0.0.0',
