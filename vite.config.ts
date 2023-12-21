@@ -1,12 +1,19 @@
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import { ConfigEnv, defineConfig, loadEnv, UserConfig } from 'vite'
+import viteCompression from 'vite-plugin-compression'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, process.cwd())
   return {
-    plugins: [vue()],
+    plugins: [
+      vue(),
+      viteCompression({
+        // 对超过1m的文件开启gzip压缩
+        threshold: 10240
+      })
+    ],
     resolve: {
       // 别名配置
       alias: {
@@ -45,7 +52,9 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     build: {
       terserOptions: {
         compress: {
+          // 构建时移除控制台输出
           drop_console: true,
+          // 构建时移除debug信息
           drop_debugger: true
         }
       }
