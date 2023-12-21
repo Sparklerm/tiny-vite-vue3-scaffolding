@@ -1,5 +1,8 @@
 <script lang="ts" setup>
 import { useExampleStore } from '@/store/example'
+import { useMouse } from '@vueuse/core'
+
+const { x, y } = useMouse()
 
 const store = useExampleStore()
 </script>
@@ -23,8 +26,13 @@ const store = useExampleStore()
     </button>
     <p>
       Edit
-      <code>components/HelloWorld.vue</code> to test HMR
+      <code>pages/HelloWorld.vue</code> to test HMR
     </p>
+  </div>
+
+  <div class="card">
+    Here's the VueUse-based tooling implementation of mouse coordinate tracking
+    <p>X : {{ x }} - Y : {{ y }}</p>
   </div>
 
   <p>
