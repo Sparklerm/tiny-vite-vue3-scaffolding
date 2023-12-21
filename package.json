@@ -9,9 +9,9 @@
     "build:prod": "vite build --mode production",
     "build-tsc": "vue-tsc --noEmit && vite build --mode production",
     "preview": "vite preview",
-    "lint": "eslint src --ext .ts,.tsx,.vue,.js,.jsx",
+    "lint": "eslint src --ext .ts,.tsx,.vue,.js,.jsx,.json",
     "prettier": "prettier --write .",
-    "prettier:src": "prettier  --write \"src/**/*.{ts,js,vue}\"",
+    "prettier:src": "prettier  --write \"src/**/*.{ts,js,vue,json}\"",
     "prepare": "husky install"
   },
   "dependencies": {

@@ -1,4 +1,4 @@
-import page from './zh-CN/pages'
+import page from './zh-CN/pages.json'
 
 export default {
   ...page

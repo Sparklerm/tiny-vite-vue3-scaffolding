@@ -11,6 +11,7 @@ const { locale } = useI18n()
  */
 const changeLocale = () => {
   const changeTo = locale.value === 'zh-CN' ? 'en-US' : 'zh-CN'
+  localStorage.setItem('locale', changeTo)
   locale.value = changeTo
 }
 </script>
