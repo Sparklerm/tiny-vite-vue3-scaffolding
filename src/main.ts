@@ -1,5 +1,11 @@
+import 'default-passive-events'
 import { createApp } from 'vue'
-import './style.css'
 import App from './App.vue'
+import router from './router/router'
+import './style.css'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+// 启用router
+app.use(router)
+// 挂载
+app.mount('#app')

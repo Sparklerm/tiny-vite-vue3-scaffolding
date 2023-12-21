@@ -11,7 +11,9 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
-    "vue": "^3.3.11"
+    "default-passive-events": "^2.0.0",
+    "vue": "^3.3.11",
+    "vue-router": "4"
   },
   "devDependencies": {
     "@types/node": "^20.10.5",
