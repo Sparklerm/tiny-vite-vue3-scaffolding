@@ -1,10 +1,18 @@
 <script lang="ts" setup>
 import { useExampleStore } from '@/store/example'
 import { useMouse } from '@vueuse/core'
-
+import { useI18n } from 'vue-i18n'
 const { x, y } = useMouse()
-
 const store = useExampleStore()
+const { locale } = useI18n()
+
+/**
+ * 切换语言
+ */
+const changeLocale = () => {
+  const changeTo = locale.value === 'zh-CN' ? 'en-US' : 'zh-CN'
+  locale.value = changeTo
+}
 </script>
 
 <template>
@@ -33,6 +41,11 @@ const store = useExampleStore()
   <div class="card">
     Here's the VueUse-based tooling implementation of mouse coordinate tracking
     <p>X : {{ x }} - Y : {{ y }}</p>
+  </div>
+
+  <div class="card">
+    <button @click="changeLocale()">切换语言</button>
+    <p>{{ $t('page.title') }}</p>
   </div>
 
   <p>
@@ -70,3 +83,4 @@ const store = useExampleStore()
   background-color: @example-color;
 }
 </style>
+@/store/locale
