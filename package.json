@@ -47,8 +47,8 @@
   },
   "lint-staged": {
     "*.{ts,tsx,vue,js,jsx}": [
-      "yarn lint",
-      "yarn prettier"
+      "yarn prettier",
+      "yarn lint"
     ]
   }
 }
