@@ -1,5 +1,7 @@
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
 import { ConfigEnv, defineConfig, loadEnv, UserConfig } from 'vite'
 import viteCompression from 'vite-plugin-compression'
 
@@ -12,6 +14,14 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       viteCompression({
         // 对超过1m的文件开启gzip压缩
         threshold: 10240
+      }),
+      Components({
+        resolvers: [
+          // 按需引入antd组件 https://antdv.com/docs/vue/introduce-cn#%E8%87%AA%E5%8A%A8%E6%8C%89%E9%9C%80%E5%BC%95%E5%85%A5%E7%BB%84%E4%BB%B6
+          AntDesignVueResolver({
+            importStyle: false
+          })
+        ]
       })
     ],
     resolve: {

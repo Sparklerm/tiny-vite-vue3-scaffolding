@@ -1,9 +1,13 @@
 <script lang="ts" setup>
-import { useExampleStore } from '@/store/example'
-import { useMouse } from '@vueuse/core'
+import { useAppStore } from '@/store/app'
+import { DownloadOutlined } from '@ant-design/icons-vue'
+import { Button } from 'ant-design-vue'
+import type { SizeType } from 'ant-design-vue/es/config-provider'
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-const { x, y } = useMouse()
-const store = useExampleStore()
+
+const size = ref<SizeType>('large')
+const appStore = useAppStore()
 const { locale } = useI18n()
 
 /**
@@ -13,6 +17,7 @@ const changeLocale = () => {
   const changeTo = locale.value === 'zh-CN' ? 'en-US' : 'zh-CN'
   localStorage.setItem('locale', changeTo)
   locale.value = changeTo
+  appStore.changeLocale(changeTo)
 }
 </script>
 
@@ -29,38 +34,67 @@ const changeLocale = () => {
   <h1>vite + vue</h1>
 
   <div class="card">
-    This button use less style
-    <button class="button" type="button" @click="store.increment">
-      count is {{ store.count }}
+    <button @click="changeLocale()">
+      {{ appStore.locale === 'zh-CN' ? 'Switch to English' : '切换简体中文' }}
     </button>
-    <p>
-      Edit
-      <code>pages/HelloWorld.vue</code> to test HMR
-    </p>
-  </div>
-
-  <div class="card">
-    Here's the VueUse-based tooling implementation of mouse coordinate tracking
-    <p>X : {{ x }} - Y : {{ y }}</p>
-  </div>
-
-  <div class="card">
-    <button @click="changeLocale()">切换语言</button>
     <p>{{ $t('page.title') }}</p>
   </div>
 
-  <p>
-    Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-      >create-vue</a
-    >, the official Vue + Vite starter
-  </p>
-  <p>
-    Install
-    <a href="https://github.com/vuejs/language-tools" target="_blank">Volar</a>
-    in your IDE for a better DX
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+  <div class="card">
+    <a-divider>Antd 组件</a-divider>
+    <a-space direction="vertical">
+      <a-radio-group v-model:value="size">
+        <a-radio-button value="large">Large</a-radio-button>
+        <a-radio-button value="default">Default</a-radio-button>
+        <a-radio-button value="small">Small</a-radio-button>
+      </a-radio-group>
+      <a-space>
+        <a-button type="primary" :size="size">Primary</a-button>
+        <a-button :size="size">Normal</a-button>
+        <a-button type="dashed" :size="size">Dashed</a-button>
+        <a-button danger :size="size">Danger</a-button>
+        <a-button type="link" :size="size">Link</a-button>
+      </a-space>
+      <a-space>
+        <a-button type="primary" :size="size">
+          <template #icon>
+            <DownloadOutlined />
+          </template>
+        </a-button>
+        <a-button type="primary" shape="circle" :size="size">
+          <template #icon>
+            <DownloadOutlined />
+          </template>
+        </a-button>
+        <a-button type="primary" shape="round" :size="size">
+          <template #icon>
+            <DownloadOutlined />
+          </template>
+          Download
+        </a-button>
+        <a-button type="primary" shape="round" :size="size">
+          <template #icon>
+            <DownloadOutlined />
+          </template>
+        </a-button>
+        <a-button type="primary" :size="size">
+          <template #icon>
+            <DownloadOutlined />
+          </template>
+          Download
+        </a-button>
+      </a-space>
+      <div
+        :style="{
+          width: '320px',
+          border: `1px solid grey`,
+          'border-radius': '8px'
+        }"
+      >
+        <a-calendar :fullscreen="false" />
+      </div>
+    </a-space>
+  </div>
 </template>
 
 <style scoped lang="less">
@@ -84,4 +118,3 @@ const changeLocale = () => {
   background-color: @example-color;
 }
 </style>
-@/store/locale
