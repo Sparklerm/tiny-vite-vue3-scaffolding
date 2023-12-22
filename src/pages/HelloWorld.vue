@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useAppStore } from '@/store/app'
+import { useAppStore } from '@/stores/app'
 import { DownloadOutlined } from '@ant-design/icons-vue'
 import { Button } from 'ant-design-vue'
 import type { SizeType } from 'ant-design-vue/es/config-provider'

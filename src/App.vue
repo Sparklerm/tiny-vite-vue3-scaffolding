@@ -2,7 +2,7 @@
 import enUS from 'ant-design-vue/es/locale/en_US'
 import zhCN from 'ant-design-vue/es/locale/zh_CN'
 
-import { useAppStore } from '@/store/app'
+import { useAppStore } from '@/stores/app'
 const appStore = useAppStore()
 </script>
 

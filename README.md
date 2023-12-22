@@ -1,18 +1,46 @@
-# Vue 3 + TypeScript + Vite
+# Vue 3 + TypeScript + Vite 的轻量脚手架
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+> 没有组件的二次封装，没有晦涩难懂的配置方式，只是一个干干净净的开发脚手架
 
-## Recommended IDE Setup
+## 项目依赖
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- [Vite](https://vitejs.cn/vite3-cn/)
+- [Vue3](https://cn.vuejs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vue Router](https://router.vuejs.org/zh/) 【Vue官方路由】
+- [Axios](https://www.axios-http.cn/) 【请求库】
+- [Pinia](https://pinia.vuejs.org/zh/) 【全局状态管理工具】
+- [vue-i18n](https://kazupon.github.io/vue-i18n/zh/) 【国际化插件】
+- [VueUse](https://vueuse.org/) 【Vue工具库】
+- [Ant Design Vue](https://antdv.com/components/overview) 【Vue3 UI组件库】
 
-## Type Support For `.vue` Imports in TS
+## 推荐VSCode插件
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+- [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) 【Vue生态插件】
+- [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) 【Vue-TS生态插件】
+- [Ant Design Vue helper](https://marketplace.visualstudio.com/items?itemName=ant-design-vue.vscode-ant-design-vue-helper) 【Antdv官方插件】
+- [i18n Ally](https://marketplace.visualstudio.com/items?itemName=lokalise.i18n-ally) 【国际化插件】
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## 项目结构
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+```text
+├── public                    # 静态资源文件夹
+├── src
+│   ├── api                  # 后台接口服务
+│   ├── assets               # 本地静态资源
+│   ├── components           # 业务通用组件
+│   ├── locales              # 国际化资源
+│   ├── layouts              # 通用布局
+│   ├── pages                # 业务页面入口和常用模板
+│   ├── router               # 路由配置
+│   ├── stores               # Pinia全局状态管理配置
+│   ├── types                # 全局类型声明
+│   ├── utils                # 工具库
+│   ├── App.vue              # 入口文件
+│   ├── main.ts              # 项目入口
+├── README.md
+└── package.json
+└── tsconfig.json
+└── vite.config.json
+
+```
