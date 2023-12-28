@@ -5,7 +5,7 @@ import NProgress from 'nprogress'
 const service = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API,
   timeout: import.meta.env.TIMEOUT,
-  headers: { 'Content-Type': 'application/json;charset=utf-8' }
+  headers: { 'Content-Type': 'application/json;charset=utf-8' },
 })
 
 // 请求拦截器
@@ -16,11 +16,11 @@ service.interceptors.request.use(
   },
   (error: any) => {
     return Promise.reject(error)
-  }
+  },
 )
 
 // 响应拦截
-service.interceptors.response.use(res => {
+service.interceptors.response.use((res) => {
   // 拦截接口响应信息，根据响应信息定义不同的操作
   return res
 })
@@ -45,11 +45,11 @@ const request: Request = {
       NProgress.start()
       service
         .get(url, { params })
-        .then(res => {
+        .then((res) => {
           NProgress.done()
           resolve(res.data)
         })
-        .catch(err => {
+        .catch((err) => {
           NProgress.done()
           reject(err.data)
         })
@@ -60,11 +60,11 @@ const request: Request = {
       NProgress.start()
       service
         .post(url, JSON.stringify(params))
-        .then(res => {
+        .then((res) => {
           NProgress.done()
           resolve(res.data)
         })
-        .catch(err => {
+        .catch((err) => {
           NProgress.done()
           reject(err.data)
         })
@@ -75,11 +75,11 @@ const request: Request = {
       NProgress.start()
       service
         .put(url, JSON.stringify(params))
-        .then(res => {
+        .then((res) => {
           NProgress.done()
           resolve(res.data)
         })
-        .catch(err => {
+        .catch((err) => {
           NProgress.done()
           reject(err.data)
         })
@@ -90,11 +90,11 @@ const request: Request = {
       NProgress.start()
       service
         .delete(url, { params })
-        .then(res => {
+        .then((res) => {
           NProgress.done()
           resolve(res.data)
         })
-        .catch(err => {
+        .catch((err) => {
           NProgress.done()
           reject(err.data)
         })
@@ -105,13 +105,13 @@ const request: Request = {
       NProgress.start()
       service
         .post(url, file, {
-          headers: { 'Content-Type': 'multipart/form-data' }
+          headers: { 'Content-Type': 'multipart/form-data' },
         })
-        .then(res => {
+        .then((res) => {
           NProgress.done()
           resolve(res.data)
         })
-        .catch(err => {
+        .catch((err) => {
           NProgress.done()
           reject(err.data)
         })
@@ -125,7 +125,7 @@ const request: Request = {
       document.body.removeChild(iframe)
     }
     document.body.appendChild(iframe)
-  }
+  },
 }
 
 export default request

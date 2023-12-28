@@ -1,4 +1,3 @@
-// 通用工具类
 import dayjs from 'dayjs'
 
 /**
@@ -11,12 +10,12 @@ import dayjs from 'dayjs'
 export function replacePlaceholders(
   placeholderStr: string,
   placeholders: Record<string, string>,
-  char?: string
+  char?: string,
 ): string {
   let result = placeholderStr
 
   char = char || ':' // 默认占位符为冒号
-  Object.keys(placeholders).forEach(key => {
+  Object.keys(placeholders).forEach((key) => {
     const placeholder = char + `${key}`
     const value = placeholders[key]
 
@@ -48,11 +47,11 @@ export const randomColor = (type: 'rgb' | 'hex' | 'hsl'): string => {
         .padStart(6, `${Math.random() * 10}`)}`
     case 'hsl':
       // 在25-95%范围内具有饱和度，在85-95%范围内具有亮度
-      return [
-        360 * Math.random(),
-        `${100 * Math.random()}%`,
-        `${100 * Math.random()}%`
-      ].toString()
+      return [360 * Math.random(), `${100 * Math.random()}%`, `${100 * Math.random()}%`].toString()
+    default:
+      return `#${Math.floor(Math.random() * 0xffffff)
+        .toString(16)
+        .padStart(6, `${Math.random() * 10}`)}`
   }
 }
 
@@ -61,7 +60,7 @@ export const randomColor = (type: 'rgb' | 'hex' | 'hsl'): string => {
  * @param text
  */
 export const copyText = (text: string) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const copyInput = document.createElement('input') //创建一个input框获取需要复制的文本内容
     copyInput.value = text
     document.body.appendChild(copyInput)

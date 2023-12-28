@@ -4,13 +4,13 @@ import { defineStore } from 'pinia'
 
 export const useAppStore = defineStore('app', {
   state: () => ({
-    locale: 'zh-CN'
+    locale: 'zh-CN',
   }),
   actions: {
     changeLocale(locale: string) {
       this.locale = locale
       dayjs.locale(locale.toLowerCase())
-    }
+    },
   },
-  persist: true
+  persist: true,
 })

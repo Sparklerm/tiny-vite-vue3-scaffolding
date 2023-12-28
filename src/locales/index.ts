@@ -17,8 +17,8 @@ const i18n = createI18n({
   globalInjection: true,
   messages: {
     'zh-CN': zhCN,
-    'en-US': enUS
-  }
+    'en-US': enUS,
+  },
 })
 
 export default i18n

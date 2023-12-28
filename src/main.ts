@@ -1,6 +1,7 @@
 import 'default-passive-events'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import 'virtual:windi.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import i18n from './locales/index'

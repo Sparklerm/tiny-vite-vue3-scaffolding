@@ -3,25 +3,29 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    es2021: true
+    es2021: true,
   },
-  parser: 'vue-eslint-parser',
+  globals: {
+    defineProps: 'readonly',
+    defineEmits: 'readonly',
+    defineExpose: 'readonly',
+    withDefaults: 'readonly',
+  },
   extends: [
-    'eslint:recommended',
-    'plugin:vue/vue3-essential',
-    'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended', // eslint-config-prettier 的缩写
-    'prettier'
+    'plugin:vue/vue3-recommended',
+    'plugin:prettier/recommended',
+    'prettier',
+    './.eslintrc-auto-import.json',
   ],
   parserOptions: {
-    ecmaVersion: 12,
+    ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true
-    }
-  }, // eslint-plugin-vue @typescript-eslint/eslint-plugin eslint-plugin-prettier的缩写
+      jsx: true,
+    },
+  },
   plugins: ['vue', '@typescript-eslint', 'prettier'],
   rules: {
     '@typescript-eslint/ban-ts-ignore': 'off',
@@ -67,8 +71,8 @@ module.exports = {
     indent: 'off', // 强制在 JSX 属性中一致地使用双引号或单引号
     // 'jsx-quotes': 'warn',
     // 强制可嵌套的块的最大深度4
-    'max-depth': 'warn', // 强制最大行数 300
-    // "max-lines": ["warn", { "max": 1200 }],
+    'max-depth': 'warn',
+    'max-lines': ['warn', { max: 1200 }], // 强制最大行数 300
     // 强制函数最大代码行数 50
     // 'max-lines-per-function': ['warn', { max: 70 }],
     // 强制函数块最多允许的的语句数量20
@@ -87,11 +91,11 @@ module.exports = {
     'space-in-parens': 'warn', // 要求操作符周围有空格
     'space-infix-ops': 'warn', // 强制在一元操作符前后使用一致的空格
     'space-unary-ops': 'warn', // 强制在注释中 // 或 /* 使用一致的空格
-    // "spaced-comment": "warn",
+    // 'spaced-comment': 'warn',
     // 强制在 switch 的冒号左右有空格
     'switch-colon-spacing': 'warn', // 强制箭头函数的箭头前后使用一致的空格
     'arrow-spacing': 'warn',
-    // 'no-var': 'warn',
+    'no-var': 'warn',
     'prefer-const': 'warn',
     'prefer-rest-params': 'warn',
     'no-useless-escape': 'warn',
@@ -104,14 +108,8 @@ module.exports = {
     'vue/multi-word-component-names': [
       'error',
       {
-        ignores: ['index', 'Index', '403', '404', '500'] //需要忽略的组件名
-      }
-    ]
+        ignores: ['index', 'Index', '403', '404', '500'], //需要忽略的组件名
+      },
+    ],
   },
-  globals: {
-    defineProps: 'readonly',
-    defineEmits: 'readonly',
-    defineExpose: 'readonly',
-    withDefaults: 'readonly'
-  }
 }
